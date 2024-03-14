@@ -13,7 +13,7 @@ parameters = {                  # these are for the Tiago robot
 }
 
 
-def init_robot():
+def init_robot ():
     """
     This should set up the communication channels with the robot (or simulator)
     and perform any initialization needed
@@ -22,9 +22,26 @@ def init_robot():
     return parameters
 
 
-def shutdown_robot():
+def shutdown_robot ():
     """
     This should perform any finalization needed on the robot,
     and close the communication channels
     """
     print("Robot shut")
+
+
+def get_wheel_encoders ():
+    """
+    Get current values of wheel encoders, which indicate the current position
+    of each wheel in radiants
+    """
+    return (0.0, 0.0)
+
+
+def set_vel_values (vlin, vrot):
+    """
+    Set new linear and rotational velocities for the robot's base
+    vlin is m/sec vrot is rad/sec
+    Returns True if successful
+    """
+    return True

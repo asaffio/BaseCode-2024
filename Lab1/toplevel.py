@@ -32,7 +32,7 @@ class TopLevelLoop:
         wl, wr = robot_gwy.get_wheel_encoders()      # read sensors (wheel rotations)
         mypose = observer.update_pose(wl, wr)        # estimate state (robot's pose)
         vlin, vrot = controller.compute_ctr(mypose)  # decide action (robot's vel)
-        robot_gwy.send_vel_controls(vlin, vrot)      # send action
+        robot_gwy.set_vel_values(vlin, vrot)         # send control action
         if self.debug > 0:
             print('vlin = {:.2f}, vrot = {:.2f})'.format(vlin, math.degrees(vrot))) 
         return True                                  # return False to exit the loop
