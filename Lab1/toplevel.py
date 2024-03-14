@@ -34,7 +34,7 @@ class TopLevelLoop:
         vlin, vrot = controller.compute_ctr(mypose)  # decide action (robot's vel)
         robot_gwy.set_vel_values(vlin, vrot)         # send control action
         if self.debug > 0:
-            print('vlin = {:.2f}, vrot = {:.2f})'.format(vlin, math.degrees(vrot))) 
+            print('pose = ({:.2f}, {:.2f}, {:.2f})'.format(mypose[0], mypose[1], math.degrees(mypose[2]))) 
         return True                                  # return False to exit the loop
 
     def run(self):
