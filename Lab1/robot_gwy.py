@@ -19,6 +19,7 @@ def init_robot():
     and perform any initialization needed
     """
     print("Robot initialized")
+    return parameters
 
 
 def shutdown_robot():
