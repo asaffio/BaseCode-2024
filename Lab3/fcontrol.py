@@ -87,8 +87,7 @@ class FController:
         label = frule[2]
         cvar  = flvar[1]
         flset = self.flsets[cvar][0]
-        self.fevaluator.set_stmt(ante)
-        level = self.fevaluator.eval()
+        level = self.fevaluator.eval(ante)
         flset[label] = max(flset[label], level)
         if debug > 0:
             print('  {} [{:.2f}] -> {}'.format(name, level, frule))
@@ -104,8 +103,7 @@ class FController:
             self.eval_frule(frule, debug)
 
     def eval_goal(self, debug = 0):
-        self.fevaluator.set_stmt(self.fgoal)
-        return self.fevaluator.eval()
+        return self.fevaluator.eval(self.fgoal)
 
     def defuzzify_var(self, cvar, debug = 0):
         lvar = self.flsets[cvar][1]
@@ -139,6 +137,9 @@ class FController:
         self.eval_frules(debug)
         self.defuzzify(debug)
         return self.eval_goal()
+    
+    def get_output(self):
+        return self.output
 
     def print_state(self):
         print("Input state:")
@@ -239,10 +240,6 @@ class FEval:
         self.fpreds = {}
         self.nest   = 1
 
-    def set_stmt(self, string):
-        self.expr  = string
-        self.input = deque(string.replace('(',' ( ').replace(')',' ) ').split())
-
     def set_interpretation(self, dict):
         self.fpreds = dict
 
@@ -256,7 +253,13 @@ class FEval:
             return None
         return self.input[1]
 
-    def eval(self, debug = 0):
+    def eval(self, stmt, debug = 0):
+        """
+        Compute the truth value of a fuzzy statement 'stmt', given as a string
+        Assume that a fuzzy interpretation has been set through set_interpretation
+        """
+        self.expr  = stmt
+        self.input = deque(stmt.replace('(',' ( ').replace(')',' ) ').split())
         self.value = 0.0
         result = self.parse_stmt()
         if debug > 3:
