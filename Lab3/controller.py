@@ -53,8 +53,8 @@ class GoToTarget (Behavior):
 
         self.fpreds = {
             # Definition of the fuzzy predicates, used in the rules' LHS
-            'TargetLeft'  : (ramp_up(5.0, 60.0), 'phi'),
-            'TargetRight' : (ramp_down(-60.0, -5.0), 'phi'),
+            'TargetLeft'  : (ramp_up(30.0, 60.0), 'phi'),
+            'TargetRight' : (ramp_down(-60.0, -30.0), 'phi'),
             'TargetAhead' : (triangle(-60.0, 0.0, 60.0), 'phi'),
             'TargetHere'  : (ramp_down(0.1, 2.0), 'rho')
         }

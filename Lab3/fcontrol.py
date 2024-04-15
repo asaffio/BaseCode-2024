@@ -132,7 +132,7 @@ class FController:
 
     def run(self, state, debug = 0):
         self.update_state(state)
-        if debug > 1:
+        if debug > 0:
             self.print_state()
         self.eval_fpreds()
         self.fevaluator.set_interpretation(self.fpvals)
