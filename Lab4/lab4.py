@@ -34,7 +34,7 @@ if __name__ == '__main__':
 
 #   myplan = pyhop.pyhop(state1, [('navigate_to', 'table2')], verbose=2)
 #   myplan = pyhop.pyhop(state1, [('navigate_to', 'table3')], verbose=2)
-    myplan = pyhop.pyhop(state1, [('navigate_to', 'bed1')], verbose=2)
+    myplan = pyhop.pyhop(state1, [('navigate_to', 'bed1')], verbose=3)
 #   myplan = pyhop.pyhop(state1, [('navigate_to', 'stove')], verbose=2)
 
     print('')
